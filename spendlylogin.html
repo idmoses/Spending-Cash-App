@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spendly - Login</title>
+  <link rel="stylesheet" href="spendlylogin.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <div id="g_id_onload"
+       data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE.apps.googleusercontent.com"
+       data-context="signin"
+       data-callback="handleGoogleResponse"
+       data-auto_prompt="false">
+  </div>
+
+  <div class="bg-shapes">
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+  </div>
+
+  <div class="login-container fade-in">
+    <div class="login-left">
+      <h1>💸 Spendly</h1>
+      <h2>Track. Save. Grow.</h2>
+      <p>Your personal expense tracker to take control of your money. Beautiful analytics, smart budgets.</p>
+      <img src="https://img.freepik.com/free-vector/finance-app-concept-illustration_114360-1719.jpg" alt="Finance">
+    </div>
+
+    <div class="login-right">
+      <div class="login-box slide-up">
+        <h2>Welcome Back 👋</h2>
+        <p class="subtitle">Login to your Spendly account</p>
+
+        <button class="btn-google" onclick="googleLogin()">
+          <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C1.14 11.49 0 17.88 0 24s1.14 12.51 3.55 14.78l7.98-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Continue with Google
+        </button>
+
+        <div class="divider"><span>or</span></div>
+
+        <form id="loginForm">
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="you@email.com" required>
+          </div>
+          <div class="input-group">
+            <label>Password</label>
+            <div class="password-wrapper">
+              <input type="password" id="password" placeholder="••••" required>
+              <span class="eye-icon" id="togglePassword">👁️</span>
+            </div>
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#" id="forgotLink">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn-login">Login →</button>
+          <p class="signup">Don't have an account? <a href="spendlysignup.html">Sign Up</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="forgotModal">
+    <div class="modal-content slide-up">
+      <span class="close" id="closeForgot">&times;</span>
+      <h2>🔑 Reset Password</h2>
+      <p class="subtitle">Enter your email and we'll send you a reset link</p>
+      <form id="forgotForm">
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" id="resetEmail" placeholder="you@email.com" required>
+        </div>
+        <button type="submit" class="btn-login">Send Reset Link</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="spendlylogin.js"></script>
+</body>
+</html>

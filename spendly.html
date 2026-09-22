@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spendly - Expense Tracker</title>
+    <link rel="stylesheet" href="spendly.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div id="toast" class="toast"></div>
+    <script>
+      if(localStorage.getItem('spendly_loggedIn')!== 'true') {
+        window.location.href = 'spendlylogin.html';
+      }
+    </script>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div>
+                <div class="logo">
+                    <h2 class="shimmer-logo">💸 Spendly</h2>
+                    <p>Expense Tracker</p>
+                    <p class="tagline-blur" style="font-size:11px; color:var(--muted); margin-top:2px; font-style:italic;">Track smart, spend smarter</p>
+                </div>
+                <nav>
+                    <a href="#" class="nav-link active" data-page="dashboard">📊 Dashboard</a>
+                    <a href="#" class="nav-link" data-page="transactions">💳 Transactions</a>
+                    <a href="#" class="nav-link" data-page="budgets">🎯 Budgets</a>
+                    <a href="#" class="nav-link" data-page="analytics">📈 Analytics</a>
+                    <a href="#" class="nav-link" data-page="cards">🏦 Cards</a>
+                    <a href="#" class="nav-link" data-page="settings">⚙️ Settings</a>
+                </nav>
+            </div>
+            <div class="sidebar-profile">
+              <img id="sidebarPfp" src="https://ui-avatars.com/api/?name=U&background=4f46e5&color=fff" alt="Profile">
+              <div class="profile-info">
+                <p class="sidebar-name" id="sidebarName">Your Name</p>
+                <p class="sidebar-email" id="sidebarEmail">your@email.com</p>
+              </div>
+              <span class="logout-icon" onclick="logout()" title="Logout">↪</span>
+            </div>
+        </aside>
+        <div class="overlay" id="overlay"></div>
+        <main class="main">
+            <header class="topbar">
+                <button class="menu-btn" id="menuBtn">☰</button>
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p style="font-size:13px; color:var(--muted); margin-top:4px;" id="currentDate"></p>
+                </div>
+                <button class="add-btn" id="addTransactionBtn">+ Add Transaction</button>
+            </header>
+            <div class="content fade-in" id="content"></div>
+        </main>
+    </div>
+    <div class="modal" id="transactionModal">
+        <div class="modal-content slide-up">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Add New Transaction</h2>
+            <form id="transactionForm">
+                <input type="text" id="desc" placeholder="Description e.g. Uber Ride" required>
+                <input type="number" id="amount" placeholder="Amount ₦" required>
+                <select id="type"><option value="expense">Expense</option><option value="income">Income</option></select>
+                <select id="category"><option>Food</option><option>Transport</option><option>Bills</option><option>Shopping</option><option>Health</option><option>Salary</option></select>
+                <input type="date" id="date" required>
+                <button type="submit" class="btn-primary">Save Transaction</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal" id="clearDataModal">
+        <div class="modal-content slide-up">
+            <span class="close" id="closeClearModal">&times;</span>
+            <h2>⚠️ Delete All Data?</h2>
+            <p style="color:var(--muted); margin:14px 0 20px 0;">This will permanently delete all transactions, budgets, and settings. This cannot be undone.</p>
+            <div style="display:flex; gap:12px;">
+                <button class="btn-primary" id="confirmClearBtn" style="background:var(--danger); flex:1">Yes, Delete</button>
+                <button class="btn-primary" id="cancelClearBtn" style="background:var(--muted); flex:1">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="spendly.js"></script>
+</body>
+</html>
