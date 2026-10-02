@@ -488,10 +488,10 @@ function closeClearModal() { document.getElementById('clearDataModal').style.dis
 function confirmClearData() {
   localStorage.clear();
   showToast('All data cleared', 'success');
-  setTimeout(() => { window.location.href = 'spendlylogin.html'; }, 600);
+  setTimeout(() => { window.location.href = 'login.html'; }, 600);
 }
 document.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('spendly_loggedIn')!== 'true') { window.location.href = 'spendlylogin.html'; return; }
+  if (localStorage.getItem('spendly_loggedIn')!== 'true') { window.location.href = 'login.html'; return; }
   updateCurrentDate();
   document.querySelectorAll('.nav-link').forEach(link => {
     link.onclick = (e) => { e.preventDefault(); loadPage(link.dataset.page); }
@@ -528,4 +528,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'light');
   loadPage('dashboard');
 });
-function logout() { localStorage.removeItem('spendly_loggedIn'); window.location.href = 'spendlylogin.html'; }
+function logout() { localStorage.removeItem('spendly_loggedIn'); window.location.href = 'login.html'; }
