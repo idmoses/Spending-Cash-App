@@ -35,6 +35,7 @@ body {
     overflow-x: hidden
 }
 
+
 .container {
     display: flex;
     height: 100vh;

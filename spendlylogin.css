@@ -36,6 +36,14 @@ body {
     pointer-events: none;
 }
 
+  #googleBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+  }
+
 .shape {
     position: absolute;
     border-radius: 50%;
